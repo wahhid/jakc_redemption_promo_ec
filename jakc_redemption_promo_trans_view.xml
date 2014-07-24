@@ -1,0 +1,117 @@
+<openerp>
+    <data>
+        <!-- RDM/PROMO TRANSACTION-->		
+        <record model="ir.ui.view" id="view_rdm_promo_trans_form">
+            <field name="name">rdm.promo.trans.form</field>
+            <field name="model">rdm.promo.trans</field>						
+            <field name="type">form</field>						
+            <field name="arch" type="xml">
+                <form string="Promo Transaction" version="7.0">  
+                    <header>
+                        <button name="trans_close" string="Close" type="object" states="open" confirm="Are you sure to close this transaction?"/>                                                
+                        <button name="print_trans" String="Print" type="object" class="oe_highlight" states="done"/>
+                        <button name="trans_reset" String="Re-Open" type="object" class="oe_highlight" states="done"/>
+                    </header>
+                    <group colspan="4">                            
+                        <field name="customer_id"/>
+                        <field name="promo_id"/>
+                        <field name="trans_date"/>
+                        <field name="total_amount"/>
+                        <field name="valid_amount"/>
+                        <field name="total_item"/>       
+                        <field name="total_coupon"/>       
+                        <field name="total_point"/>       
+                        <field name="coupon"/>       
+                        <field name="point"/>       
+                        <field name="add_coupon"/>       
+                        <field name="add_point"/>       
+                        <field name="state"/>       
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Details">
+                            <field name="trans_detail_ids" widget="one2many_list" nolabel="1" context="{'trans_id': active_id}">
+                                <tree>
+                                    <field name="trans_date"/>
+                                    <field name="tenant_id"/>
+                                    <field name="total_amount"/>
+                                    <field name="total_item"/>
+                                    <field name="payment_type"/>
+                                    <field name="bank"/>
+                                    <field name="card_type"/>
+                                    <field name="card_number"/>
+                                </tree>
+                            </field>
+                        </page>              
+                        <page string="Coupons">
+                            <field name="trans_coupon_ids" widget="one2many_list" nolabel="1" context="{'trans_id': active_id}" readonly="1">
+                                <tree>
+                                    <field name="coupon_num"/>
+                                </tree>                                
+                            </field>
+                        </page>     
+                        <page string="Remarks">                            
+                        </page>     
+                    </notebook>
+                </form>
+            </field>
+        </record>
+		
+        <record model="ir.ui.view" id="view_rdm_promo_trans_tree">
+            <field name="name">rdm.promo.trans.tree</field>
+            <field name="model">rdm.promo.trans</field>			
+            <field name="type">tree</field>						
+            <field name="arch" type="xml">
+                <tree string="Promo Transaction">
+                    <field name="customer_id"/>                        
+                    <field name="trans_date"/>                    
+                    <field name="total_amount"/>                     
+                    <field name="total_item"/>
+                </tree>
+            </field>
+        </record>
+        
+        
+        <record model="ir.ui.view" id="view_rdm_promo_trans_detail_form">
+            <field name="name">rdm.promo.trans.detail.form</field>
+            <field name="model">rdm.promo.trans.detail</field>						
+            <field name="type">form</field>						
+            <field name="arch" type="xml">
+                <form string="Promo Transaction Detail" version="7.0">  
+                    <group colspan="4">
+                        <field name="trans_date"/>            
+                        <field name="tenant_id"/>            
+                        <field name="total_amount"/>
+                        <field name="total_item"/>
+                        <field name="payment_type"/>
+                        <field name="bank"/>
+                        <field name="card_type"/>
+                        <field name="card_number"/>
+                    </group>                   
+                </form>
+            </field>
+        </record>
+
+        <!-- RDM/SEQUENCE -->        
+        <record id="sequence_type_rdm_promo_trans_coupon" model="ir.sequence.type">
+            <field name="name">Promo Transaction Coupon</field>
+            <field name="code">rdm.promo.trans.coupon.sequence</field>
+        </record>
+        
+        <record id="sequence_rdm_promo_trans_coupon" model="ir.sequence">
+            <field name="name">Promo Transaction Coupon</field>
+            <field name="code">rdm.promo.trans.coupon.sequence</field>
+            <field name="padding" eval="10"/>
+            <field name="number_increment">1</field>            
+        </record>
+        
+        <!-- RDM/ACTION -->
+        <!-- PROMO -->
+	<record model="ir.actions.act_window" id="action_rdm_promo_trans">
+            <field name="name">Promo Transaction</field>
+            <field name="res_model">rdm.promo.trans</field>
+            <field name="view_mode">tree,form</field>
+        </record>		
+        <!-- MENU -->
+        
+    </data>
+</openerp>

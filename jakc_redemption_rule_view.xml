@@ -1,0 +1,69 @@
+<openerp>
+    <data>
+        
+        <!-- RDM/RULES -->
+		
+        <record model="ir.ui.view" id="view_rdm_rules_form">
+            <field name="name">rdm.rules.form</field>
+            <field name="model">rdm.rules</field>						
+            <field name="type">form</field>						
+            <field name="arch" type="xml">
+                <form string="Rules"  version="7.0">  
+                    <group colspan="4">                            
+                        <field name="name"/>                            
+                        <field name="apply_for"/>                            
+                        <field name="rule_schema"/>                            
+                        <field name="operation"/>                            
+                        <field name="quantity"/>                        
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Birthday" attrs="{'invisible':[('rule_schema','!=','birthday')]}">
+                            <field name="birthday"/>                        
+                        </page>
+                        <page string="Day" attrs="{'invisible':[('rule_schema','!=','day')]}">
+                            <field name="day"/>                        
+                        </page>                        
+                        <page string="Day Name" attrs="{'invisible':[('rule_schema','!=','dayname')]}">
+                            <field name="day_name"/>                        
+                        </page>       
+                        <page string="Card Type" attrs="{'invisible':[('rule_schema','!=','cardtype')]}">
+                            <field name="card_type_ids" widget="one2many_list" nolabel="1" context="{'rules_id': active_id}"/>
+                        </page>                                               
+                        <page string="Tenant" attrs="{'invisible':[('rule_schema','!=','tenant')]}">
+                            <field name="tenant_ids" widget="one2many_list" nolabel="1" context="{'rules_id': active_id}"/>
+                        </page>                                               
+                        <page string="Tenant Type" attrs="{'invisible':[('rule_schema','!=','tenanttype')]}">
+                            <field name="tenant_type_ids" widget="one2many_list" nolabel="1" context="{'rules_id': active_id}"/>
+                        </page>                                               
+                        <page string="Bank Card" attrs="{'invisible':[('rule_schema','!=','bankcard')]}">
+                            <field name="bank_card_ids" widget="one2many_list" nolabel="1" context="{'rules_id': active_id}"/>
+                        </page>                                               
+                    </notebook>
+                </form>
+            </field>
+        </record>
+		
+        <record model="ir.ui.view" id="view_rdm_rules_tree">
+            <field name="name">rdm.rules.tree</field>
+            <field name="model">rdm.rules</field>			
+            <field name="type">tree</field>						
+            <field name="arch" type="xml">
+                <tree string="Rules">
+                    <field name="name"/>                            
+                    <field name="apply_for"/>                            
+                    <field name="rule_schema"/>                            
+                    <field name="operation"/>                            
+                    <field name="quantity"/>                             
+                </tree>
+            </field>
+        </record>
+        
+        <!-- RDM/ACTION -->
+        <!-- RULES -->
+	<record model="ir.actions.act_window" id="action_rdm_rules">
+            <field name="name">Rules</field>
+            <field name="res_model">rdm.rules</field>
+            <field name="view_mode">tree,form</field>
+        </record>		        
+    </data>        
+</openerp>

@@ -1,0 +1,144 @@
+<openerp>
+    <data>
+        <!-- RDM/AGE SEGMENT -->
+		
+        <record model="ir.ui.view" id="view_rdm_age_segment_form">
+            <field name="name">rdm.age.segment.form</field>
+            <field name="model">rdm.age.segment</field>						
+            <field name="type">form</field>						
+            <field name="arch" type="xml">
+                <form string="Age Segment">  
+                    <group>                            
+                        <field name="name"/>                            
+                        <field name="start_age"/>                            
+                        <field name="end_age"/>                            
+                    </group>
+                </form>
+            </field>
+        </record>
+		
+        <record model="ir.ui.view" id="view_rdm_age_segment_tree">
+            <field name="name">rdm.age.segment.tree</field>
+            <field name="model">rdm.age.segment</field>			
+            <field name="type">tree</field>						
+            <field name="arch" type="xml">
+                <tree string="Age Segment">
+                    <field name="name"/>
+                    <field name="start_age"/>                            
+                    <field name="end_age"/>                            		
+                </tree>
+            </field>
+        </record>
+        
+        <!-- RDM/PROMO-->		
+        <record model="ir.ui.view" id="view_rdm_promo_form">
+            <field name="name">rdm.promo.form</field>
+            <field name="model">rdm.promo</field>						
+            <field name="type">form</field>						
+            <field name="arch" type="xml">
+                <form string="Promo" version="7.0">  
+                    <header>                        
+                        <button name="promo_review" string="Review" type="object" class="oe_highlight" states="draft"/>                                                                       
+                        <button name="promo_active" string="Start Promo" type="object" class="oe_highlight" states="review"/>                                                                       
+                        <button name="promo_close" string="End Promo" type="object" class="oe_highlight" states="active"/>                                                                                                                       
+                        <button name="promo_reset" string="Re-open Promo" type="object" class="oe_highlight" states="done"/>                                                         
+                        <button name="promo_print" string="Print Promo" type="object" class="oe_highlight" states="draft,review,active,done"/>                                                         
+                    </header>                    
+                    <group colspan="4">                            
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="desc_email"/>                        
+                        <field name="desc_sms"/>                            
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                        <field name="last_redeem"/>
+                        <field name="draw_date"/>
+                        <field name="spend_amount"/>
+                        <field name="coupon"/>
+                        <field name="point"/>
+                        <field name="limit_point"/>                        
+                        <field name="state"/>                                                
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Image">
+                            <field name="image1"/>                                
+                        </page>                                        
+                        <page string="Segment">
+                            <field name="segment_ids" widget="one2many_list" nolabel="1" context="{'promo_id': active_id}"/>
+                        </page>                        
+                        <page string="Gender">
+                            <field name="gender_ids" widget="one2many_list" nolabel="1" class="oe_inline oe_no_button" context="{'promo_id': active_id}"/>
+                        </page>                        
+                        <page string="Religion">
+                            <field name="religion_ids" widget="one2many_list" nolabel="1" class="oe_inline oe_no_button" context="{'promo_id': active_id}"/>
+                        </page>                                                
+                        <page string="Ethnic">
+                            <field name="ethnic_ids" widget="one2many_list" nolabel="1" class="oe_inline oe_no_button" context="{'promo_id': active_id}"/>
+                        </page>                        
+                        <page string="Tenant">
+                            <field name="tenant_ids" widget="one2many_list" nolabel="1" class="oe_inline oe_no_button" context="{'promo_id': active_id}"/>
+                        </page>                        
+                        <page string="Marital">
+                            <field name="marital_ids" widget="one2many_list" nolabel="1" class="oe_inline oe_no_button" context="{'promo_id': active_id}"/>
+                        </page>                        
+                        <page string="Interest">
+                            <field name="interest_ids" widget="one2many_list" nolabel="1" class="oe_inline oe_no_button" context="{'promo_id': active_id}"/>
+                        </page>                        
+                        <page string="Card Type">
+                            <field name="card_type_ids" widget="one2many_list" nolabel="1" class="oe_inline oe_no_button" context="{'promo_id': active_id}">
+                                <tree>
+                                    <field name="card_type_id"/>
+                                </tree>                            
+                            </field>
+                        </page>               
+                        <page string="Tenant Type">
+                            <field name="tenant_type_ids" widget="one2many_list" nolabel="1" class="oe_inline oe_no_button" context="{'promo_id': active_id}">
+                                <tree>
+                                    <field name="tenant_type_id"/>
+                                </tree>                                                           
+                            </field>
+                        </page>            
+                        <page string="Rules">
+                            <field name="rules_ids" widget="one2many_list" nolabel="1" class="oe_inline oe_no_button" context="{'promo_id': active_id}">
+                                <tree>
+                                    <field name="rules_id"/>
+                                </tree>                                                                                          
+                            </field>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+		
+        <record model="ir.ui.view" id="view_rdm_promo_tree">
+            <field name="name">rdm.promo.tree</field>
+            <field name="model">rdm.promo</field>			
+            <field name="type">tree</field>						
+            <field name="arch" type="xml">
+                <tree string="Promo">
+                    <field name="name"/>                        
+                    <field name="start_date"/>
+                    <field name="end_date"/>                     
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- RDM/ACTION -->
+        <!-- PROMO -->
+	<record model="ir.actions.act_window" id="action_rdm_promo">
+            <field name="name">Promo</field>
+            <field name="res_model">rdm.promo</field>
+            <field name="view_mode">tree,form</field>
+        </record>		
+        <!-- AGE SEGMENT -->
+	<record model="ir.actions.act_window" id="action_rdm_age_segment">
+            <field name="name">Age Segment</field>
+            <field name="res_model">rdm.age.segment</field>
+            <field name="view_mode">tree,form</field>
+        </record>		
+
+        <!-- MENU -->
+        
+    </data>
+</openerp>

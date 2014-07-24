@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rdm_promo_manager,rdm.promo.manager,model_rdm_promo,base.group_rdm_manager,1,1,1,1
+access_rdm_promo_operator,rdm.promo.operator,model_rdm_promo,base.group_rdm_operator,1,0,0,0
+access_rdm_rules_manager,rdm.rules.manager,model_rdm_rules,base.group_rdm_manager,1,1,1,1
+access_rdm_rules_operator,rdm.rules.operator,model_rdm_rules,base.group_rdm_operator,1,0,0,0
+access_rdm_promo_trans_manager,rdm.promo.trans.manager,model_rdm_promo_trans,base.group_rdm_manager,1,1,1,1
+access_rdm_promo_trans_operator,rdm.promo.trans.operator,model_rdm_promo_trans,base.group_rdm_operator,1,0,1,0

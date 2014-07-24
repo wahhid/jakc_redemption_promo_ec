@@ -1,0 +1,3 @@
+import jakc_redemption_promo
+import jakc_redemption_rule
+import jakc_redemption_promo_trans

@@ -1,0 +1,6 @@
+<openerp>
+    <data>        
+        <menuitem id="rdm_promo_menu" name="Promo" parent="base.rdm_promo_menu" groups="base.group_rdm_manager" action="action_rdm_promo" sequence="1"/>
+        <menuitem id="rdm_promo_segment_menu" name="Promo Segment" parent="base.rdm_general_menu" groups="base.group_rdm_manager" action="action_rdm_age_segment" sequence="13"/>        
+    </data>
+</openerp>
